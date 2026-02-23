@@ -1,0 +1,178 @@
+Group Project Proposal – CSC 4370/6370
+================================================
+
+Group Members:
+- Kenny Vo
+
+
+Project Summary:
+- Selected Topic Track: Escape Room Challenge (Track F)
+- Extension Pack: Adventure Pack
+- Bonus Feature(s): None planned initially (focus will be on strong core implementation first)
+
+Project Overview:
+For this project, I will build a static HTML and CSS-based “Escape Room Challenge” website. The site will simulate an interactive escape room experience where users move through different puzzle rooms and unlock clues. Each room will include layered visual elements and CSS-only interaction techniques such as :target and :checked patterns to reveal hidden information.
+
+The Adventure Pack will be used to create a sense of progression through checkpoints and visual cues that guide the user through the experience. The overall goal is to design a clean, immersive interface that demonstrates strong semantic HTML structure, reusable CSS components, responsive layouts, and meaningful animations.
+
+The focus of this project will be on usability, visual consistency, accessibility, and thoughtful design decisions rather than overcomplicating features.
+
+
+Proposed Wireframe:
+
+Homepage (index.html)
+- Immersive hero section with title and theme
+- Short introduction to the escape challenge
+- “Begin Challenge” call-to-action button
+- Navigation bar (Home, Rooms, Clue Board, Final Unlock, Team)
+- Visual checkpoint/timeline element (Adventure Pack feature)
+
+Purpose:
+The homepage introduces the concept of the escape room and clearly directs the user into the experience.
+
+
+Puzzle Rooms Page (rooms.html)
+- Responsive grid layout of room cards (Room 1, Room 2, Room 3)
+- Each card includes:
+  - Room title
+  - Difficulty indicator
+  - Unlock/progress status
+- CSS-only clue reveal interactions
+
+Purpose:
+This page allows users to explore different puzzle rooms and interact with clues using CSS-based state changes.
+
+
+Clue Board Page (clues.html)
+- Organized archive of discovered clues
+- Layered interface using :target for reveal behavior
+- Visual indicators for solved vs. unsolved clues
+
+Purpose:
+The clue board reinforces structure and organization while allowing users to review progress in a clear and readable format.
+
+
+Final Unlock Page (final.html)
+- Progress indicator
+- Final challenge message
+- Unlock animation effect
+- Celebration-style animation once unlocked
+
+Purpose:
+This page provides closure to the experience and highlights animation techniques used throughout the project.
+
+
+Team Page (team.html)
+- Project leader: Kenny Vo
+- Time tracking log
+- Development journal summary
+
+Purpose:
+This page fulfills submission requirements and documents the project development process.
+
+
+Functionality:
+
+Screen-to-Screen Transition Use Cases:
+- Home to Rooms page through the main call-to-action button
+- Rooms to Clue Board through navigation
+- Rooms to Final Unlock once progression is complete
+- Persistent navigation bar across all pages
+
+
+Transition Implementation Details:
+- CSS transitions for hover states on buttons and cards
+- Navigation hover underline animation
+- Smooth visual feedback for interactive elements
+
+
+Transformation Implementation Details:
+- transform: scale() for card hover emphasis
+- transform: translateY() for subtle lift effects
+- Small positional shifts when revealing clues
+
+
+Animation Implementation Details:
+At least three meaningful animations will be implemented:
+1. Room card entrance animation (fade + slide effect)
+2. Progress bar fill animation using keyframes
+3. Unlock animation on the final challenge page
+
+Animations will support user feedback and hierarchy rather than distract from content.
+
+
+User Experience:
+
+Proposed Use Cases:
+- User arrives on homepage and reads instructions.
+- User selects a room and interacts with puzzle elements.
+- User checks the clue board to review progress.
+- User reaches the final unlock page and completes the challenge.
+
+
+Accessibility Notes:
+- Proper semantic structure (header, nav, main, section, footer).
+- Logical heading hierarchy (h1 to h2 to h3).
+- Visible focus states for keyboard navigation.
+- High-contrast color palette for readability.
+- Use of prefers-reduced-motion media query where applicable.
+- Descriptive alt text for relevant images.
+
+
+Test Cases:
+
+Usability Testing:
+- Peer feedback on navigation clarity.
+- Evaluation of visual hierarchy and readability.
+- Testing clarity of puzzle progression flow.
+
+Responsive Testing:
+- Mobile (600px and below)
+- Tablet (around 768px)
+- Desktop (1024px and above)
+
+Verification includes:
+- No content overlap
+- No horizontal scrolling
+- Proper grid reflow
+
+Validation Plan:
+- HTML validation check
+- CSS validation check
+- Manual accessibility review
+
+
+Approach to Refinement and Improvement:
+
+The project will follow an iterative development plan across the 14-day build window:
+
+Days 1 to 3: Planning, wireframing, semantic structure
+Days 4 to 7: Layout implementation using Grid and Flexbox
+Days 8 to 11: Styling system development and animation integration
+Days 12 to 14: Responsive refinement and accessibility testing
+Days 15 to 17: QA, polishing, and presentation preparation
+
+Feedback will be incorporated during layout and animation phases to improve clarity and usability.
+
+
+Proposed APIs:
+No external APIs will be used.
+This project will strictly follow the HTML and CSS-only requirement.
+
+
+Alignment with Learning Objectives:
+
+This project supports course goals by:
+- Demonstrating strong semantic HTML structure and accessibility awareness.
+- Applying CSS fundamentals including Grid, Flexbox, transforms, transitions, and animations.
+- Implementing responsive design using media queries.
+- Making intentional design decisions and explaining trade-offs.
+- Following Kanban methodology for time and task management.
+- Producing a polished, portfolio-ready static website.
+
+
+Signed Proposal Statement:
+
+I acknowledge the conditions in this proposal, commit to active participation, and understand that individual grades may vary based on contribution and performance.
+
+Name + Signature: Kenny Vo
