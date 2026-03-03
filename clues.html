@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <!--
   clues.html
-  Clue board uses :target to reveal clue details without JavaScript
-  Theme pass: looks like a control terminal during evacuation
+  Clue Board page (CSS-only) using :target
+  Theme: looks like a lab terminal during an evacuation
+
+  Student note:
+  - I used :target so you can click a clue on the left and "focus" it on the right without JS.
+  - The focused clue gets a scanline highlight to make it feel like a terminal selection.
 -->
 <html lang="en">
 
@@ -41,6 +45,10 @@
         <p class="page-subtitle">
           Click a clue to focus it. This uses :target, so it works without any JavaScript.
         </p>
+
+        <p class="terminal-status" role="status">
+          Terminal: ONLINE • Scan mode: ACTIVE • Evac route: IN PROGRESS
+        </p>
       </header>
 
       <div class="clue-layout">
@@ -66,6 +74,10 @@
             <span class="chip chip-muted">Clear</span>
             Clear selection
           </a>
+
+          <p class="clue-side-note">
+            Note: the “locked” clue stays readable, but it’s styled as restricted until the Final Unlock step.
+          </p>
         </aside>
 
         <section class="clue-detail" aria-label="Clue detail">
@@ -92,8 +104,16 @@
           <article id="clue-vault" class="clue-card">
             <h2 class="card-title">Exit Seal</h2>
             <p class="card-text">
-              Locked for now. The final page simulates a seal opening using CSS-only state and motion.
+              Locked for now. The final page simulates the seal opening using CSS-only state and motion.
             </p>
+
+            <div class="lock-warning" role="note" aria-label="Locked warning">
+              <p class="lock-title">Restricted Panel</p>
+              <p class="lock-text">
+                Clearance required. Continue the evacuation route and use Final Unlock to break the seal.
+              </p>
+            </div>
+
             <p class="status-line">
               Status: <span class="status status-locked">Locked</span>
             </p>

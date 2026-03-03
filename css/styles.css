@@ -680,6 +680,103 @@ a {
   box-shadow: 0 0 18px rgba(43, 246, 255, 0.10);
 }
 
+/*
+  Terminal-style upgrades for the clue board:
+  - terminal-status adds a “system online” banner
+  - :target clue cards get a scanline highlight to show focus
+  - locked warning panel looks like a restricted notice
+*/
+
+.terminal-status {
+  margin: var(--space-3) 0 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(43, 246, 255, 0.18);
+  background: rgba(43, 246, 255, 0.06);
+  color: rgba(232, 240, 255, 0.86);
+  font-size: 13px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.clue-side-note {
+  margin: var(--space-3) 0 0;
+  color: rgba(232, 240, 255, 0.58);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.clue-card {
+  position: relative;
+}
+
+.clue-card:target {
+  border-color: rgba(43, 246, 255, 0.28);
+  box-shadow: 0 0 0 rgba(43, 246, 255, 0.0);
+}
+
+.clue-card:target::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  pointer-events: none;
+  background:
+    linear-gradient(180deg,
+      rgba(43, 246, 255, 0.00),
+      rgba(43, 246, 255, 0.06),
+      rgba(43, 246, 255, 0.00));
+  opacity: 0.9;
+  animation: scanLine 1.6s ease-in-out infinite;
+}
+
+/*
+  :has is supported in modern browsers, and the page still works without it.
+*/
+body:has(#clue-lobby:target) .clue-item[href="#clue-lobby"],
+body:has(#clue-archive:target) .clue-item[href="#clue-archive"],
+body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
+  border-color: rgba(43, 246, 255, 0.35);
+  background: rgba(43, 246, 255, 0.08);
+}
+
+.lock-warning {
+  margin-top: var(--space-3);
+  padding: var(--space-3);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 59, 59, 0.30);
+  background: rgba(255, 59, 59, 0.08);
+}
+
+.lock-title {
+  margin: 0;
+  font-weight: 780;
+  letter-spacing: 0.2px;
+  color: rgba(255, 220, 220, 0.95);
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.lock-text {
+  margin: 6px 0 0;
+  color: rgba(255, 220, 220, 0.78);
+  font-size: 14px;
+}
+
+@keyframes scanLine {
+  0% {
+    transform: translateY(-12px);
+  }
+
+  50% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(12px);
+  }
+}
+
 .chip {
   font-size: 12px;
   padding: 4px 8px;
