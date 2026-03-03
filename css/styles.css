@@ -520,6 +520,133 @@ a {
   font-size: 14px;
 }
 
+.checkpoint-strip {
+  margin: 0 0 var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius);
+  border: 1px solid rgba(43, 246, 255, 0.18);
+  background:
+    radial-gradient(700px 220px at 15% 0%, rgba(43, 246, 255, 0.10), transparent 60%),
+    radial-gradient(700px 220px at 85% 10%, rgba(255, 61, 242, 0.08), transparent 62%),
+    rgba(232, 240, 255, 0.03);
+}
+
+.checkpoint-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.checkpoint-title {
+  margin: 0;
+  font-weight: 780;
+  letter-spacing: 0.2px;
+}
+
+.checkpoint-meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.checkpoint-row {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-3) 0 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.checkpoint-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(232, 240, 255, 0.12);
+  background: rgba(5, 7, 11, 0.35);
+}
+
+.pill-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(232, 240, 255, 0.20);
+  border: 1px solid rgba(232, 240, 255, 0.22);
+  flex: 0 0 auto;
+}
+
+.pill-text {
+  font-size: 14px;
+  color: rgba(232, 240, 255, 0.88);
+}
+
+.checkpoint-pill.is-done {
+  border-color: rgba(43, 246, 255, 0.20);
+  background: rgba(43, 246, 255, 0.06);
+}
+
+.checkpoint-pill.is-done .pill-dot {
+  background: rgba(43, 246, 255, 0.72);
+  border-color: rgba(43, 246, 255, 0.70);
+}
+
+.checkpoint-pill.is-current {
+  border-color: rgba(255, 61, 242, 0.26);
+  background: rgba(255, 61, 242, 0.08);
+}
+
+.checkpoint-pill.is-current .pill-dot {
+  background: rgba(255, 61, 242, 0.70);
+  border-color: rgba(255, 61, 242, 0.68);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+.checkpoint-pill.is-next {
+  opacity: 0.88;
+}
+
+.checkpoint-bar {
+  margin-top: var(--space-3);
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(232, 240, 255, 0.08);
+  border: 1px solid rgba(232, 240, 255, 0.12);
+  overflow: hidden;
+}
+
+.checkpoint-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(43, 246, 255, 0.80), rgba(255, 61, 242, 0.70));
+  animation: fillBar 900ms ease forwards;
+}
+
+.checkpoint-60 {
+  width: 60%;
+}
+
+.checkpoint-hint {
+  margin: 10px 0 0;
+  color: rgba(232, 240, 255, 0.62);
+  font-size: 14px;
+}
+
+@media (min-width: 700px) {
+  .checkpoint-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .checkpoint-pill {
+    justify-content: center;
+  }
+}
+
 .clue-layout {
   display: grid;
   gap: var(--space-3);

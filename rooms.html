@@ -3,6 +3,7 @@
   rooms.html
   Room selection page with a responsive card grid
   Theme pass: neon lab zones + evacuation tone
+  Update: added evacuation checkpoint strip (Adventure Pack)
 -->
 <html lang="en">
 
@@ -43,6 +44,38 @@
         </p>
       </header>
 
+      <section class="checkpoint-strip" aria-label="Evacuation route checkpoints">
+        <div class="checkpoint-top">
+          <p class="checkpoint-title">Evacuation Route</p>
+          <p class="checkpoint-meta">Current phase: Zone sweep</p>
+        </div>
+
+        <ol class="checkpoint-row" aria-label="Checkpoint steps">
+          <li class="checkpoint-pill is-done">
+            <span class="pill-dot" aria-hidden="true"></span>
+            <span class="pill-text">Boot Systems</span>
+          </li>
+
+          <li class="checkpoint-pill is-current" aria-current="step">
+            <span class="pill-dot" aria-hidden="true"></span>
+            <span class="pill-text">Clear Zones</span>
+          </li>
+
+          <li class="checkpoint-pill is-next">
+            <span class="pill-dot" aria-hidden="true"></span>
+            <span class="pill-text">Break Exit Seal</span>
+          </li>
+        </ol>
+
+        <div class="checkpoint-bar" role="img" aria-label="Route progress bar at 60 percent">
+          <span class="checkpoint-fill checkpoint-60"></span>
+        </div>
+
+        <p class="checkpoint-hint">
+          Hint: Collect clues from each zone, then move to Final Unlock.
+        </p>
+      </section>
+
       <section class="card-grid" aria-label="Room cards">
         <article class="card room-card">
           <div class="room-top">
@@ -60,6 +93,9 @@
             <div class="reveal-panel" role="region" aria-label="Zone 1 clue">
               <p class="clue">
                 Clue: The key is hidden in plain sight. Start by reading what looks “too small to matter.”
+              </p>
+              <p class="mini-note">
+                I’m keeping these clues short on purpose so the layout stays clean on mobile.
               </p>
             </div>
           </div>
