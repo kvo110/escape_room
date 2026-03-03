@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+  final.html
+  Final unlock page with a CSS-only "unlock" moment using :checked
+  Fix: unlock state now properly controls the door panel
+-->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Final Unlock | Escape Room Challenge</title>
+  <meta name="description" content="Final unlock screen with a CSS-only door animation." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Escape Room Challenge Home">
+        <span class="brand-mark" aria-hidden="true">🧪</span>
+        <span class="brand-text">Neon Lab Escape</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="rooms.html">Rooms</a>
+        <a class="nav-link" href="clues.html">Clue Board</a>
+        <a class="nav-link is-active" href="final.html">Final Unlock</a>
+        <a class="nav-link" href="team.html">Team</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="container">
+      <header class="page-head">
+        <h1 class="page-title">Final Unlock</h1>
+        <p class="page-subtitle">
+          The exit seal is active. Flip the switch to simulate an unlock sequence using CSS-only state.
+        </p>
+      </header>
+
+      <section class="unlock-wrap" aria-label="Unlock layout">
+        <input class="unlock-check" type="checkbox" id="unlock" />
+
+        <div class="unlock-grid">
+          <div class="card">
+            <h2 class="card-title">Checkpoint Progress</h2>
+            <p class="card-text">You made it to the last door. One clean move.</p>
+
+            <div class="progress">
+              <div class="progress-bar" role="img" aria-label="Progress bar, set to 90 percent">
+                <span class="progress-fill progress-90"></span>
+              </div>
+              <p class="progress-label">Progress: 90%</p>
+            </div>
+
+            <div class="unlock-toggle">
+              <label class="btn btn-primary" for="unlock">Flip the switch</label>
+              <p class="mini-note">
+                This is a UI simulation. The goal is showing transforms, transitions, and animation in a meaningful
+                moment.
+              </p>
+            </div>
+
+            <a class="btn btn-ghost" href="clues.html">Back to Clue Board</a>
+          </div>
+
+          <div class="door card" aria-label="Door animation panel">
+            <h2 class="card-title">Exit Seal</h2>
+
+            <div class="door-stage" aria-hidden="true">
+              <div class="door-frame">
+                <div class="door-slab"></div>
+                <div class="door-glow"></div>
+                <div class="door-hazard"></div>
+              </div>
+            </div>
+
+            <p class="card-text door-caption">
+              When unlocked, the seal rotates and the neon spill expands like the hallway is opening.
+            </p>
+
+            <a class="btn btn-ghost" href="index.html">Back to Home</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-text">Final page | CSS-only unlock animation</p>
+      <p class="footer-text"><a class="footer-link" href="rooms.html">Back to Rooms</a></p>
+    </div>
+  </footer>
+</body>
+
+</html>

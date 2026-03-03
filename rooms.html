@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--
+  rooms.html
+  Room selection page with a responsive card grid
+  Theme pass: neon lab zones + evacuation tone
+-->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rooms | Escape Room Challenge</title>
+  <meta name="description" content="Choose a puzzle room and reveal clues using CSS-only interactions." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Escape Room Challenge Home">
+        <span class="brand-mark" aria-hidden="true">🧪</span>
+        <span class="brand-text">Neon Lab Escape</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link is-active" href="rooms.html">Rooms</a>
+        <a class="nav-link" href="clues.html">Clue Board</a>
+        <a class="nav-link" href="final.html">Final Unlock</a>
+        <a class="nav-link" href="team.html">Team</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="container">
+      <header class="page-head">
+        <h1 class="page-title">Lab Zones</h1>
+        <p class="page-subtitle">
+          Each zone has one clue. Tap “Reveal clue” to open it. This is CSS-only using a checkbox state.
+        </p>
+      </header>
+
+      <section class="card-grid" aria-label="Room cards">
+        <article class="card room-card">
+          <div class="room-top">
+            <h2 class="card-title">Zone 1: Containment Lobby</h2>
+            <span class="badge badge-easy">Low</span>
+          </div>
+
+          <p class="card-text">
+            The first alarm is usually the quietest. Find the smallest detail.
+          </p>
+
+          <div class="reveal">
+            <input class="reveal-check" type="checkbox" id="r1" />
+            <label class="reveal-btn" for="r1">Reveal clue</label>
+            <div class="reveal-panel" role="region" aria-label="Zone 1 clue">
+              <p class="clue">
+                Clue: The key is hidden in plain sight. Start by reading what looks “too small to matter.”
+              </p>
+            </div>
+          </div>
+
+          <a class="card-link" href="clues.html#clue-lobby">Save to clue board</a>
+        </article>
+
+        <article class="card room-card">
+          <div class="room-top">
+            <h2 class="card-title">Zone 2: Research Archive</h2>
+            <span class="badge badge-med">Medium</span>
+          </div>
+
+          <p class="card-text">
+            Patterns matter more than words when everything is blinking.
+          </p>
+
+          <div class="reveal">
+            <input class="reveal-check" type="checkbox" id="r2" />
+            <label class="reveal-btn" for="r2">Reveal clue</label>
+            <div class="reveal-panel" role="region" aria-label="Zone 2 clue">
+              <p class="clue">
+                Clue: If you see a repeated shape, count it. That number is part of the exit code.
+              </p>
+            </div>
+          </div>
+
+          <a class="card-link" href="clues.html#clue-archive">Save to clue board</a>
+        </article>
+
+        <article class="card room-card">
+          <div class="room-top">
+            <h2 class="card-title">Zone 3: Reactor Corridor</h2>
+            <span class="badge badge-hard">High</span>
+          </div>
+
+          <p class="card-text">
+            The hallway is sealed. The solution isn’t “on” the door, it’s around it.
+          </p>
+
+          <div class="reveal">
+            <input class="reveal-check" type="checkbox" id="r3" />
+            <label class="reveal-btn" for="r3">Reveal clue</label>
+            <div class="reveal-panel" role="region" aria-label="Zone 3 clue">
+              <p class="clue">
+                Clue: The answer is in the spacing between panels. Look for what separates things.
+              </p>
+            </div>
+          </div>
+
+          <a class="card-link" href="final.html">Go to Final Unlock</a>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-text">Rooms page | CSS-only clue reveals</p>
+      <p class="footer-text"><a class="footer-link" href="index.html">Back home</a></p>
+    </div>
+  </footer>
+</body>
+
+</html>

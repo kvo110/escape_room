@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+  clues.html
+  Clue board uses :target to reveal clue details without JavaScript
+  Theme pass: looks like a control terminal during evacuation
+-->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clue Board | Escape Room Challenge</title>
+  <meta name="description" content="Clue archive with CSS-only reveal states using :target." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Escape Room Challenge Home">
+        <span class="brand-mark" aria-hidden="true">🧪</span>
+        <span class="brand-text">Neon Lab Escape</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="rooms.html">Rooms</a>
+        <a class="nav-link is-active" href="clues.html">Clue Board</a>
+        <a class="nav-link" href="final.html">Final Unlock</a>
+        <a class="nav-link" href="team.html">Team</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="container">
+      <header class="page-head">
+        <h1 class="page-title">Clue Board</h1>
+        <p class="page-subtitle">
+          Click a clue to focus it. This uses :target, so it works without any JavaScript.
+        </p>
+      </header>
+
+      <div class="clue-layout">
+        <aside class="clue-list" aria-label="Clue list">
+          <h2 class="section-title">Terminal Index</h2>
+
+          <a class="clue-item" href="#clue-lobby">
+            <span class="chip chip-open">Open</span>
+            Containment Lobby
+          </a>
+
+          <a class="clue-item" href="#clue-archive">
+            <span class="chip chip-open">Open</span>
+            Research Archive
+          </a>
+
+          <a class="clue-item" href="#clue-vault">
+            <span class="chip chip-locked">Locked</span>
+            Exit Seal
+          </a>
+
+          <a class="clue-item" href="#none">
+            <span class="chip chip-muted">Clear</span>
+            Clear selection
+          </a>
+        </aside>
+
+        <section class="clue-detail" aria-label="Clue detail">
+          <article id="clue-lobby" class="clue-card">
+            <h2 class="card-title">Containment Lobby</h2>
+            <p class="card-text">
+              The key is hidden in plain sight. Start by reading what looks “too small to matter.”
+            </p>
+            <p class="status-line">
+              Status: <span class="status status-open">Open</span>
+            </p>
+          </article>
+
+          <article id="clue-archive" class="clue-card">
+            <h2 class="card-title">Research Archive</h2>
+            <p class="card-text">
+              If you see a repeated shape, count it. That number is part of the exit code.
+            </p>
+            <p class="status-line">
+              Status: <span class="status status-open">Open</span>
+            </p>
+          </article>
+
+          <article id="clue-vault" class="clue-card">
+            <h2 class="card-title">Exit Seal</h2>
+            <p class="card-text">
+              Locked for now. The final page simulates a seal opening using CSS-only state and motion.
+            </p>
+            <p class="status-line">
+              Status: <span class="status status-locked">Locked</span>
+            </p>
+          </article>
+
+          <article id="none" class="clue-card">
+            <h2 class="card-title">No clue selected</h2>
+            <p class="card-text">
+              Pick a clue from the left to highlight it here.
+            </p>
+            <p class="status-line">
+              Status: <span class="status status-muted">Idle</span>
+            </p>
+          </article>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-text">Clue Board | :target based reveal</p>
+      <p class="footer-text"><a class="footer-link" href="rooms.html">Back to Rooms</a></p>
+    </div>
+  </footer>
+</body>
+
+</html>
