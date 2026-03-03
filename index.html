@@ -2,7 +2,10 @@
 <!--
   index.html
   Escape Room Challenge (Track F) + Adventure Pack
-  Theme pass: dark cinematic neon laboratory + evacuation scenario
+  Theme: dark cinematic neon laboratory + evacuation scenario
+
+  - This page sets the tone (evacuation alert + checkpoints).
+  - I wrapped the hero content in .hero-stage so I can add a subtle flicker overlay using CSS only.
 -->
 <html lang="en">
 
@@ -37,66 +40,72 @@
 
   <main id="main">
     <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="alert-bar" role="status">
-            Evacuation in progress. Follow checkpoints. Do not panic.
-          </p>
-
-          <h1 class="hero-title">Emergency Exit Protocol</h1>
-          <p class="hero-subtitle">
-            The lab is on lockdown. The lights are flickering, alarms are pulsing, and the corridors are sealed.
-            Find the clues, pass the checkpoints, and unlock the final door using CSS-only interactions.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="rooms.html">Begin Evacuation Route</a>
-            <a class="btn btn-ghost" href="clues.html">Open Clue Board</a>
-          </div>
-
-          <div class="notice" role="note">
-            <p class="notice-title">Quick instructions</p>
-            <p class="notice-text">
-              Each room has a clue reveal. Use the Clue Board to keep track. The Final Unlock simulates the exit seal.
+      <div class="container hero-stage">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="alert-bar" role="status">
+              Evacuation in progress. Follow checkpoints. Do not panic.
             </p>
-          </div>
-        </div>
 
-        <div class="hero-card" aria-label="Checkpoint timeline preview">
-          <h2 class="card-title">Evacuation Checkpoints</h2>
-          <p class="card-text">
-            Your route is staged. The UI uses motion cues to guide what matters during the escape.
-          </p>
+            <p class="system-line">
+              System log: Corridor lights unstable • Door seals active • Exit route required
+            </p>
 
-          <ol class="timeline" aria-label="Checkpoint list">
-            <li class="timeline-step is-current">
-              <span class="step-dot" aria-hidden="true"></span>
-              <div class="step-body">
-                <p class="step-title">Checkpoint 1</p>
-                <p class="step-sub">Wake the system</p>
-              </div>
-            </li>
-            <li class="timeline-step">
-              <span class="step-dot" aria-hidden="true"></span>
-              <div class="step-body">
-                <p class="step-title">Checkpoint 2</p>
-                <p class="step-sub">Route through the rooms</p>
-              </div>
-            </li>
-            <li class="timeline-step">
-              <span class="step-dot" aria-hidden="true"></span>
-              <div class="step-body">
-                <p class="step-title">Checkpoint 3</p>
-                <p class="step-sub">Break the exit seal</p>
-              </div>
-            </li>
-          </ol>
+            <h1 class="hero-title">Emergency Exit Protocol</h1>
+            <p class="hero-subtitle">
+              The lab is on lockdown. The lights are flickering, alarms are pulsing, and the corridors are sealed.
+              Find the clues, pass the checkpoints, and unlock the final door using CSS-only interactions.
+            </p>
 
-          <div class="progress">
-            <div class="progress-bar" role="img" aria-label="Progress bar, starting at 20 percent">
-              <span class="progress-fill progress-20"></span>
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-beacon" href="rooms.html">Begin Evacuation Route</a>
+              <a class="btn btn-ghost" href="clues.html">Open Clue Board</a>
             </div>
-            <p class="progress-label">Progress: 20%</p>
+
+            <div class="notice" role="note">
+              <p class="notice-title">Quick instructions</p>
+              <p class="notice-text">
+                Each room has a clue reveal. Use the Clue Board to keep track. The Final Unlock simulates the exit seal.
+              </p>
+            </div>
+          </div>
+
+          <div class="hero-card card" aria-label="Checkpoint timeline preview">
+            <h2 class="card-title">Evacuation Checkpoints</h2>
+            <p class="card-text">
+              Your route is staged. The UI uses motion cues to guide what matters during the escape.
+            </p>
+
+            <ol class="timeline" aria-label="Checkpoint list">
+              <li class="timeline-step is-current">
+                <span class="step-dot" aria-hidden="true"></span>
+                <div class="step-body">
+                  <p class="step-title">Checkpoint 1</p>
+                  <p class="step-sub">Wake the system</p>
+                </div>
+              </li>
+              <li class="timeline-step">
+                <span class="step-dot" aria-hidden="true"></span>
+                <div class="step-body">
+                  <p class="step-title">Checkpoint 2</p>
+                  <p class="step-sub">Route through the rooms</p>
+                </div>
+              </li>
+              <li class="timeline-step">
+                <span class="step-dot" aria-hidden="true"></span>
+                <div class="step-body">
+                  <p class="step-title">Checkpoint 3</p>
+                  <p class="step-sub">Break the exit seal</p>
+                </div>
+              </li>
+            </ol>
+
+            <div class="progress">
+              <div class="progress-bar" role="img" aria-label="Progress bar, starting at 20 percent">
+                <span class="progress-fill progress-20"></span>
+              </div>
+              <p class="progress-label">Progress: 20%</p>
+            </div>
           </div>
         </div>
       </div>
@@ -130,7 +139,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p class="footer-text">CSC 4370 Project 1 | Escape Room Challenge</p>
+      <p class="footer-text">CSC 4370/6370 Project 1 | Escape Room Challenge</p>
       <p class="footer-text">Built by Kenny Vo</p>
     </div>
   </footer>
