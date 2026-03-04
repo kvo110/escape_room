@@ -4,9 +4,9 @@
   Clue Board page (CSS-only) using :target
   Theme: looks like a lab terminal during an evacuation
 
-  Note:
-  - I used :target so you can click a clue on the left and "focus" it on the right without JS.
-  - The focused clue gets a scanline highlight to make it feel like a terminal selection.
+  Student note for professor:
+  - :target lets me switch the “focused” clue without JavaScript.
+  - I use styling + scanline animation to make it feel like a terminal selection.
 -->
 <html lang="en">
 
@@ -31,7 +31,7 @@
       <nav class="site-nav" aria-label="Primary">
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link" href="rooms.html">Rooms</a>
-        <a class="nav-link is-active" href="clues.html">Clue Board</a>
+        <a class="nav-link is-active" href="clues.html" aria-current="page">Clue Board</a>
         <a class="nav-link" href="final.html">Final Unlock</a>
         <a class="nav-link" href="team.html">Team</a>
       </nav>
@@ -76,7 +76,7 @@
           </a>
 
           <p class="clue-side-note">
-            Note: the “locked” clue stays readable, but it’s styled as restricted until the Final Unlock step.
+            Student note: the “locked” clue stays readable, but it’s styled as restricted until the Final Unlock step.
           </p>
         </aside>
 

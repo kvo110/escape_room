@@ -2,14 +2,11 @@
 <!--
   final.html
   Final unlock page (CSS-only)
-  Update:
-  - Added a "code entry" UI mock using radio buttons (no JS).
-  - When the correct code is selected, we show ACCESS GRANTED and enable the unlock button.
-  - The door animation is still controlled by a checkbox, but now it feels justified in the story.
 
-  Note:
-  - This simulates a "panel + verification" flow using only HTML/CSS state.
-  - Radio = choose one code, checkbox = flip the final switch.
+  Student note for professor:
+  - Radio buttons simulate choosing a “code” (no JS).
+  - The checkbox simulates flipping the final switch.
+  - This makes the door animation feel earned in the story (override verified first).
 -->
 <html lang="en">
 
@@ -35,7 +32,7 @@
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link" href="rooms.html">Rooms</a>
         <a class="nav-link" href="clues.html">Clue Board</a>
-        <a class="nav-link is-active" href="final.html">Final Unlock</a>
+        <a class="nav-link is-active" href="final.html" aria-current="page">Final Unlock</a>
         <a class="nav-link" href="team.html">Team</a>
       </nav>
     </div>
@@ -51,7 +48,6 @@
       </header>
 
       <section class="unlock-wrap" aria-label="Unlock layout">
-        <!-- Code selection (radio group) -->
         <div class="code-panel card" aria-label="Override code panel">
           <h2 class="card-title">Override Console</h2>
           <p class="card-text">
@@ -61,13 +57,13 @@
           <fieldset class="code-fieldset">
             <legend class="code-legend">Override code</legend>
 
-            <!-- Student note: "code-good" is the correct choice that triggers ACCESS GRANTED styles -->
             <input class="code-radio" type="radio" name="code" id="code-a" />
             <label class="code-option" for="code-a">
               <span class="code-badge">A</span>
               Pattern: 2 • 2 • 1
             </label>
 
+            <!-- Student note: "code-good" is the correct choice that triggers ACCESS GRANTED styles -->
             <input class="code-radio" type="radio" name="code" id="code-good" />
             <label class="code-option" for="code-good">
               <span class="code-badge">B</span>
@@ -98,10 +94,8 @@
           </div>
 
           <div class="unlock-actions">
-            <!-- The checkbox still powers the door animation -->
             <input class="unlock-check" type="checkbox" id="unlock" />
 
-            <!-- Disabled by default, enabled when correct code is selected -->
             <label class="btn btn-primary btn-lock" for="unlock" aria-disabled="true">
               Flip the switch
             </label>
@@ -110,11 +104,10 @@
           </div>
 
           <p class="mini-note">
-            Student note: I’m using radio buttons as a stand-in for “entering” a code without JavaScript.
+            Student note: radio buttons stand in for “entering” a code without JavaScript.
           </p>
         </div>
 
-        <!-- Door panel -->
         <div class="unlock-grid">
           <div class="door card" aria-label="Door animation panel">
             <h2 class="card-title">Exit Seal</h2>

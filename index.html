@@ -4,9 +4,10 @@
   Escape Room Challenge (Track F) + Adventure Pack
   Theme: dark cinematic neon laboratory + evacuation scenario
 
-  Note:
+  Student note for professor:
   - This page sets the tone and introduces the route.
-  - I added an "Evac Map" component that I reuse on rooms.html so the UI feels consistent.
+  - I reuse the same “Evac Map” component on rooms.html for consistency.
+  - I’m using aria-current="page" only on the active nav link (accessibility + clear UX).
 -->
 <html lang="en">
 
@@ -30,10 +31,11 @@
       </a>
 
       <nav class="site-nav" aria-label="Primary">
+        <!-- Student note: only the current page gets is-active + aria-current -->
         <a class="nav-link is-active" href="index.html" aria-current="page">Home</a>
-        <a class="nav-link is-active" href="rooms.html" aria-current="page">Rooms</a>
-        <a class="nav-link is-active" href="clues.html" aria-current="page">Clue Board</a>
-        <a class="nav-link is-active" href="final.html" aria-current="page">Final Unlock</a>
+        <a class="nav-link" href="rooms.html">Rooms</a>
+        <a class="nav-link" href="clues.html">Clue Board</a>
+        <a class="nav-link" href="final.html">Final Unlock</a>
         <a class="nav-link" href="team.html">Team</a>
       </nav>
     </div>

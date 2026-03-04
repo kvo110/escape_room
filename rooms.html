@@ -4,9 +4,9 @@
   Room selection page with a responsive card grid
   Theme: neon lab zones + evacuation tone
 
-  Note:
-  - I reused the Evac Map from index.html so navigation and visuals feel consistent.
-  - The checkpoint strip shows progress, and the map shows the route at a glance.
+  Student note for professor:
+  - I reuse the Evac Map from index.html so the UI feels like one system.
+  - Interactions are CSS-only using checkbox state (:checked).
 -->
 <html lang="en">
 
@@ -30,7 +30,7 @@
 
       <nav class="site-nav" aria-label="Primary">
         <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link is-active" href="rooms.html">Rooms</a>
+        <a class="nav-link is-active" href="rooms.html" aria-current="page">Rooms</a>
         <a class="nav-link" href="clues.html">Clue Board</a>
         <a class="nav-link" href="final.html">Final Unlock</a>
         <a class="nav-link" href="team.html">Team</a>
@@ -134,7 +134,7 @@
                 Clue: The key is hidden in plain sight. Start by reading what looks “too small to matter.”
               </p>
               <p class="mini-note">
-                I’m keeping these clues short on purpose so the layout stays clean on mobile.
+                Student note: I’m keeping clues short so the layout stays clean on mobile.
               </p>
             </div>
           </div>

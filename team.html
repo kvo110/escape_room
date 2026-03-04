@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <!--
   team.html
-  Solo project team page with time tracking + short journal starter
+  Solo project team page with time tracking + development journal
+
+  Student note for professor:
+  - Even though this is solo, I’m tracking time + decisions so my process is easy to defend in the walkthrough.
 -->
 <html lang="en">
 
@@ -18,9 +21,10 @@
 
   <header class="site-header">
     <div class="container header-inner">
+      <!-- Student note: keep branding consistent across all pages -->
       <a class="brand" href="index.html" aria-label="Escape Room Challenge Home">
-        <span class="brand-mark" aria-hidden="true">🗝️</span>
-        <span class="brand-text">Escape Room</span>
+        <span class="brand-mark" aria-hidden="true">🧪</span>
+        <span class="brand-text">Neon Lab Escape</span>
       </a>
 
       <nav class="site-nav" aria-label="Primary">
@@ -28,7 +32,7 @@
         <a class="nav-link" href="rooms.html">Rooms</a>
         <a class="nav-link" href="clues.html">Clue Board</a>
         <a class="nav-link" href="final.html">Final Unlock</a>
-        <a class="nav-link is-active" href="team.html">Team</a>
+        <a class="nav-link is-active" href="team.html" aria-current="page">Team</a>
       </nav>
     </div>
   </header>
@@ -42,7 +46,7 @@
         </p>
       </header>
 
-      <section class="card-grid">
+      <section class="card-grid" aria-label="Team cards">
         <article class="card">
           <h2 class="card-title">Project Leader</h2>
           <p class="card-text"><strong>Kenny Vo</strong></p>
@@ -57,7 +61,7 @@
 
         <article class="card">
           <h2 class="card-title">Time Tracking</h2>
-          <p class="card-text">Update this daily so you have proof for the rubric.</p>
+          <p class="card-text">Student note: I update this daily so I have process evidence for the rubric.</p>
 
           <ul class="list">
             <li>Day 1: 1.0 hr (planning + scaffold)</li>
@@ -66,7 +70,7 @@
           </ul>
 
           <p class="mini-note">
-            Later we can format this as a nicer table once the content stabilizes.
+            Later I can format this as a nicer table once the content stabilizes.
           </p>
         </article>
 
@@ -75,7 +79,7 @@
           <ul class="list">
             <li>Decision: Use Grid for page-level layouts and Flex for smaller UI alignment.</li>
             <li>Decision: Use CSS-only interaction patterns (:target and :checked) to simulate puzzle reveals.</li>
-            <li>Goal: Keep motion subtle so it supports UX instead of feeling like a random animation pack.</li>
+            <li>Goal: Keep motion subtle so it supports UX instead of feeling like random animation.</li>
           </ul>
         </article>
       </section>

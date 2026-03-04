@@ -122,6 +122,9 @@ a {
   backdrop-filter: blur(12px);
   background: rgba(5, 7, 11, 0.72);
   border-bottom: 1px solid var(--line);
+
+  /* Lets the ::after alarm line anchor to the header box */
+  position: relative;
 }
 
 .header-inner {
@@ -1197,17 +1200,22 @@ body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
   border-color: rgba(43, 246, 255, 0.35);
 }
 
-/* Door animation gated behind correct code + switch */
-.code-panel:has(#code-good:checked) .unlock-check:checked~.unlock-grid .door .door-slab {
+/* Student note for professor:
+  The unlock checkbox is nested inside .code-panel, but the door is in .unlock-grid (a sibling).
+  So I target the shared parent (.unlock-wrap) using :has() to detect BOTH states:
+  - correct code selected
+  - switch flipped
+*/
+.unlock-wrap:has(#code-good:checked):has(#unlock:checked) .unlock-grid .door .door-slab {
   transform: perspective(700px) rotateY(-28deg);
 }
 
-.code-panel:has(#code-good:checked) .unlock-check:checked~.unlock-grid .door .door-glow {
+.unlock-wrap:has(#code-good:checked):has(#unlock:checked) .unlock-grid .door .door-glow {
   opacity: 1;
   animation: glow 1.2s ease-in-out infinite;
 }
 
-.code-panel:has(#code-good:checked) .unlock-check:checked~.unlock-grid .door .door-hazard {
+.unlock-wrap:has(#code-good:checked):has(#unlock:checked) .unlock-grid .door .door-hazard {
   opacity: 1;
   animation: hazardFlash 1.1s ease-in-out infinite;
 }
@@ -1560,5 +1568,173 @@ body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/*
+   Layout spacing patch (adjustment)
+   Fixes spacing between Route Map and Zone cards
+*/
+
+/* Adds consistent spacing between stacked sections */
+.section {
+  margin-top: var(--space-5);
+}
+
+/* Ensure Evac Map card has breathing room below it */
+.evac-map {
+  margin-bottom: var(--space-5);
+}
+
+/* Grid that contains the three zone cards */
+.card-grid {
+  margin-top: var(--space-4);
+}
+
+/* Prevent cards from visually sticking together */
+.card-grid .card {
+  height: 100%;
+}
+
+/* Extra safety spacing when a card is followed by a grid */
+.card+.card-grid {
+  margin-top: var(--space-5);
+}
+
+/* Cinematic motion upgrades (CSS-only)
+  Student note for professor:
+  I wanted two “story” animations that support the evacuation vibe:
+  1) Header alarm sweep (subtle, so it doesn’t distract)
+  2) Door unlock energy surge (only kicks in when the correct code + switch are used)
+*/
+
+/* 1) Alarm pulse / sweep on the sticky header
+  This makes the nav area feel like a live control panel during evacuation.
+*/
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+      rgba(255, 59, 59, 0),
+      rgba(255, 59, 59, 0.75),
+      rgba(255, 59, 59, 0));
+  opacity: 0.35;
+  transform: translateX(-35%);
+  animation: alarmSweep 2.3s ease-in-out infinite;
+}
+
+@keyframes alarmSweep {
+  0% {
+    opacity: 0.18;
+    transform: translateX(-55%);
+    filter: blur(0px);
+  }
+
+  50% {
+    opacity: 0.45;
+    transform: translateX(0%);
+    filter: blur(0.2px);
+  }
+
+  100% {
+    opacity: 0.18;
+    transform: translateX(55%);
+    filter: blur(0px);
+  }
+}
+
+/* Reduced motion: keep the header line static */
+@media (prefers-reduced-motion: reduce) {
+  .site-header::after {
+    animation: none !important;
+    opacity: 0.22;
+    transform: none;
+  }
+}
+
+/*
+  The surge/scan needs to watch BOTH the code selection and the switch state.
+  Since the door lives outside the code panel, I target the shared wrapper with :has().
+*/
+.unlock-wrap:has(#code-good:checked):has(#unlock:checked) .unlock-grid .door .door-frame::after {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  border-radius: 24px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(43, 246, 255, 0.34), transparent 62%),
+    radial-gradient(circle at 55% 45%, rgba(255, 61, 242, 0.20), transparent 70%);
+  opacity: 0;
+  transform: scale(0.96);
+  animation: unlockSurge 1.35s ease-out forwards;
+}
+
+/* Quick shimmer/scan when the door unlocks */
+.unlock-wrap:has(#code-good:checked):has(#unlock:checked) .unlock-grid .door .door-slab {
+  animation: doorScan 1.4s ease-in-out 1;
+}
+
+/* Keyframes for the surge */
+@keyframes unlockSurge {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+    filter: blur(6px);
+  }
+
+  55% {
+    opacity: 1;
+    transform: scale(1.02);
+    filter: blur(2px);
+  }
+
+  100% {
+    opacity: 0.75;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
+/* Keyframes for the scan shimmer */
+@keyframes doorScan {
+  0% {
+    box-shadow: 0 0 0 rgba(43, 246, 255, 0);
+    filter: brightness(1);
+  }
+
+  45% {
+    box-shadow: 0 0 26px rgba(43, 246, 255, 0.16);
+    filter: brightness(1.06);
+  }
+
+  100% {
+    box-shadow: 0 0 0 rgba(43, 246, 255, 0);
+    filter: brightness(1);
+  }
+}
+
+/* Reduced motion: no surge/scan, still show a simple “unlocked” look */
+@media (prefers-reduced-motion: reduce) {
+  .site-header::after {
+    animation: none !important;
+    opacity: 0.22;
+    transform: none;
+  }
+
+  .unlock-wrap:has(#code-good:checked):has(#unlock:checked) .unlock-grid .door .door-frame::after {
+    animation: none !important;
+    opacity: 0.45;
+    transform: none;
+    filter: none;
+  }
+
+  .unlock-wrap:has(#code-good:checked):has(#unlock:checked) .unlock-grid .door .door-slab {
+    animation: none !important;
   }
 }
