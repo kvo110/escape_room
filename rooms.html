@@ -2,8 +2,11 @@
 <!--
   rooms.html
   Room selection page with a responsive card grid
-  Theme pass: neon lab zones + evacuation tone
-  Update: added evacuation checkpoint strip (Adventure Pack)
+  Theme: neon lab zones + evacuation tone
+
+  Note:
+  - I reused the Evac Map from index.html so navigation and visuals feel consistent.
+  - The checkpoint strip shows progress, and the map shows the route at a glance.
 -->
 <html lang="en">
 
@@ -76,6 +79,42 @@
         </p>
       </section>
 
+      <section class="evac-map card" aria-label="Evacuation map">
+        <h2 class="card-title">Route Map</h2>
+        <p class="card-text">
+          Student note: Same map component as the home page, just with a smaller header.
+        </p>
+
+        <div class="map-grid">
+          <div class="map-node node-start">
+            <p class="node-title">Start</p>
+            <p class="node-sub">Containment Lobby</p>
+            <span class="node-tag">Zone 1</span>
+          </div>
+
+          <div class="map-path" aria-hidden="true"></div>
+
+          <div class="map-node node-mid">
+            <p class="node-title">Checkpoint</p>
+            <p class="node-sub">Research Archive</p>
+            <span class="node-tag">Zone 2</span>
+          </div>
+
+          <div class="map-path" aria-hidden="true"></div>
+
+          <div class="map-node node-end">
+            <p class="node-title">Exit Seal</p>
+            <p class="node-sub">Reactor Corridor</p>
+            <span class="node-tag">Zone 3</span>
+          </div>
+        </div>
+
+        <div class="map-actions">
+          <a class="btn btn-ghost" href="clues.html">Open Clue Board</a>
+          <a class="btn btn-primary" href="final.html">Go to Final Unlock</a>
+        </div>
+      </section>
+
       <section class="card-grid" aria-label="Room cards">
         <article class="card room-card">
           <div class="room-top">
@@ -93,6 +132,9 @@
             <div class="reveal-panel" role="region" aria-label="Zone 1 clue">
               <p class="clue">
                 Clue: The key is hidden in plain sight. Start by reading what looks “too small to matter.”
+              </p>
+              <p class="mini-note">
+                I’m keeping these clues short on purpose so the layout stays clean on mobile.
               </p>
             </div>
           </div>

@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <!--
   final.html
-  Final unlock page with a CSS-only "unlock" moment using :checked
-  Fix: unlock state now properly controls the door panel
+  Final unlock page (CSS-only)
+  Update:
+  - Added a "code entry" UI mock using radio buttons (no JS).
+  - When the correct code is selected, we show ACCESS GRANTED and enable the unlock button.
+  - The door animation is still controlled by a checkbox, but now it feels justified in the story.
+
+  Note:
+  - This simulates a "panel + verification" flow using only HTML/CSS state.
+  - Radio = choose one code, checkbox = flip the final switch.
 -->
 <html lang="en">
 
@@ -39,36 +46,76 @@
       <header class="page-head">
         <h1 class="page-title">Final Unlock</h1>
         <p class="page-subtitle">
-          The exit seal is active. Flip the switch to simulate an unlock sequence using CSS-only state.
+          The exit seal is active. Select the override code, then flip the switch to break the seal.
         </p>
       </header>
 
       <section class="unlock-wrap" aria-label="Unlock layout">
-        <input class="unlock-check" type="checkbox" id="unlock" />
+        <!-- Code selection (radio group) -->
+        <div class="code-panel card" aria-label="Override code panel">
+          <h2 class="card-title">Override Console</h2>
+          <p class="card-text">
+            Choose the correct 3-part code pattern. This is a UI simulation using CSS-only state.
+          </p>
 
-        <div class="unlock-grid">
-          <div class="card">
-            <h2 class="card-title">Checkpoint Progress</h2>
-            <p class="card-text">You made it to the last door. One clean move.</p>
+          <fieldset class="code-fieldset">
+            <legend class="code-legend">Override code</legend>
 
-            <div class="progress">
-              <div class="progress-bar" role="img" aria-label="Progress bar, set to 90 percent">
-                <span class="progress-fill progress-90"></span>
-              </div>
-              <p class="progress-label">Progress: 90%</p>
-            </div>
+            <!-- Student note: "code-good" is the correct choice that triggers ACCESS GRANTED styles -->
+            <input class="code-radio" type="radio" name="code" id="code-a" />
+            <label class="code-option" for="code-a">
+              <span class="code-badge">A</span>
+              Pattern: 2 • 2 • 1
+            </label>
 
-            <div class="unlock-toggle">
-              <label class="btn btn-primary" for="unlock">Flip the switch</label>
-              <p class="mini-note">
-                This is a UI simulation. The goal is showing transforms, transitions, and animation in a meaningful
-                moment.
-              </p>
-            </div>
+            <input class="code-radio" type="radio" name="code" id="code-good" />
+            <label class="code-option" for="code-good">
+              <span class="code-badge">B</span>
+              Pattern: 1 • 3 • 2
+            </label>
+
+            <input class="code-radio" type="radio" name="code" id="code-c" />
+            <label class="code-option" for="code-c">
+              <span class="code-badge">C</span>
+              Pattern: 3 • 1 • 1
+            </label>
+          </fieldset>
+
+          <div class="access-block" aria-live="polite">
+            <p class="access-title access-idle">ACCESS: Awaiting code</p>
+            <p class="access-title access-granted">ACCESS: Granted</p>
+            <p class="access-title access-denied">ACCESS: Denied</p>
+
+            <p class="access-sub access-idle">
+              Select a code above to continue.
+            </p>
+            <p class="access-sub access-granted">
+              Override verified. The switch is now available.
+            </p>
+            <p class="access-sub access-denied">
+              Incorrect pattern. Try a different code.
+            </p>
+          </div>
+
+          <div class="unlock-actions">
+            <!-- The checkbox still powers the door animation -->
+            <input class="unlock-check" type="checkbox" id="unlock" />
+
+            <!-- Disabled by default, enabled when correct code is selected -->
+            <label class="btn btn-primary btn-lock" for="unlock" aria-disabled="true">
+              Flip the switch
+            </label>
 
             <a class="btn btn-ghost" href="clues.html">Back to Clue Board</a>
           </div>
 
+          <p class="mini-note">
+            Student note: I’m using radio buttons as a stand-in for “entering” a code without JavaScript.
+          </p>
+        </div>
+
+        <!-- Door panel -->
+        <div class="unlock-grid">
           <div class="door card" aria-label="Door animation panel">
             <h2 class="card-title">Exit Seal</h2>
 
@@ -93,7 +140,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p class="footer-text">Final page | CSS-only unlock animation</p>
+      <p class="footer-text">Final page | CSS-only override + unlock animation</p>
       <p class="footer-text"><a class="footer-link" href="rooms.html">Back to Rooms</a></p>
     </div>
   </footer>

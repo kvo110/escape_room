@@ -345,6 +345,106 @@ a {
   grid-template-columns: 1fr;
 }
 
+/* Note:
+  Evac Map component (reused on multiple pages)
+  - This is basically a mini map UI made from Grid + styled nodes + a path line.
+  - The point is to show reuse and consistent design language (rubric friendly).
+*/
+
+.evac-map {
+  margin-bottom: var(--space-4);
+}
+
+.map-grid {
+  margin-top: var(--space-3);
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+}
+
+.map-node {
+  position: relative;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(232, 240, 255, 0.12);
+  background: rgba(5, 7, 11, 0.35);
+}
+
+.node-title {
+  margin: 0;
+  font-weight: 850;
+  letter-spacing: 0.2px;
+}
+
+.node-sub {
+  margin: 4px 0 0;
+  color: rgba(232, 240, 255, 0.70);
+  font-size: 14px;
+}
+
+.node-tag {
+  display: inline-flex;
+  margin-top: 10px;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(232, 240, 255, 0.14);
+  background: rgba(232, 240, 255, 0.05);
+  color: rgba(232, 240, 255, 0.78);
+}
+
+.node-start {
+  border-color: rgba(43, 246, 255, 0.22);
+}
+
+.node-mid {
+  border-color: rgba(124, 92, 255, 0.22);
+}
+
+.node-end {
+  border-color: rgba(255, 61, 242, 0.22);
+}
+
+.map-path {
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(232, 240, 255, 0.10);
+  background: linear-gradient(90deg, rgba(43, 246, 255, 0.55), rgba(255, 61, 242, 0.40));
+  opacity: 0.75;
+  animation: mapFlow 2.2s ease-in-out infinite;
+}
+
+.map-actions {
+  margin-top: var(--space-3);
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@keyframes mapFlow {
+
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+
+  50% {
+    filter: brightness(1.12);
+  }
+}
+
+@media (min-width: 700px) {
+  .map-grid {
+    grid-template-columns: 1fr 80px 1fr 80px 1fr;
+    align-items: center;
+  }
+
+  .map-path {
+    height: 14px;
+  }
+}
+
 .card {
   position: relative;
   background:
@@ -946,6 +1046,166 @@ body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
   color: var(--muted);
 }
 
+/* Note:
+  Final unlock "override console" (CSS-only)
+  - radio buttons simulate choosing a code pattern
+  - correct selection (code-good) unlocks the switch visually
+*/
+
+.code-panel {
+  margin-bottom: var(--space-3);
+}
+
+.code-fieldset {
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.code-legend {
+  font-weight: 780;
+  margin-bottom: 10px;
+  color: rgba(232, 240, 255, 0.88);
+}
+
+.code-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.code-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(232, 240, 255, 0.12);
+  background: rgba(5, 7, 11, 0.35);
+  cursor: pointer;
+  transition: transform var(--t-fast) ease, border-color var(--t-fast) ease, box-shadow var(--t-fast) ease, background var(--t-fast) ease;
+}
+
+.code-option:hover {
+  transform: translateY(-1px);
+  border-color: rgba(43, 246, 255, 0.28);
+  box-shadow: 0 0 18px rgba(43, 246, 255, 0.10);
+}
+
+.code-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-weight: 850;
+  border: 1px solid rgba(232, 240, 255, 0.14);
+  background: rgba(232, 240, 255, 0.06);
+}
+
+.code-radio:checked+.code-option {
+  border-color: rgba(255, 61, 242, 0.28);
+  background: rgba(255, 61, 242, 0.08);
+}
+
+.access-block {
+  margin-top: var(--space-3);
+  padding: var(--space-3);
+  border-radius: 14px;
+  border: 1px solid rgba(232, 240, 255, 0.12);
+  background: rgba(232, 240, 255, 0.03);
+}
+
+.access-title {
+  margin: 0;
+  font-weight: 850;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.access-sub {
+  margin: 6px 0 0;
+  color: rgba(232, 240, 255, 0.70);
+  font-size: 14px;
+}
+
+.access-idle,
+.access-granted,
+.access-denied {
+  display: none;
+}
+
+.unlock-actions {
+  margin-top: var(--space-3);
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* By default the switch looks disabled */
+.btn-lock {
+  opacity: 0.55;
+  pointer-events: none;
+  border-color: rgba(232, 240, 255, 0.12);
+  background: rgba(232, 240, 255, 0.05);
+}
+
+/* Status logic:
+  - If code-good is checked: show ACCESS GRANTED and enable the switch
+  - If any other code is checked: show ACCESS DENIED
+  - If none checked: show idle
+*/
+.code-panel .access-idle {
+  display: block;
+}
+
+.code-panel:has(#code-a:checked) .access-idle,
+.code-panel:has(#code-c:checked) .access-idle,
+.code-panel:has(#code-good:checked) .access-idle {
+  display: none;
+}
+
+.code-panel:has(#code-a:checked) .access-denied,
+.code-panel:has(#code-c:checked) .access-denied {
+  display: block;
+  color: rgba(255, 220, 220, 0.95);
+}
+
+.code-panel:has(#code-good:checked) .access-granted {
+  display: block;
+  color: rgba(210, 255, 250, 0.95);
+}
+
+/* Enable switch when correct code is selected */
+.code-panel:has(#code-good:checked) .btn-lock {
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(43, 246, 255, 0.12);
+  border-color: rgba(43, 246, 255, 0.35);
+}
+
+/* Note:
+  Door animation should only react when BOTH:
+  - correct code is selected AND
+  - unlock checkbox is checked
+*/
+.code-panel:has(#code-good:checked) .unlock-check:checked~.unlock-grid .door .door-slab {
+  transform: perspective(700px) rotateY(-28deg);
+}
+
+.code-panel:has(#code-good:checked) .unlock-check:checked~.unlock-grid .door .door-glow {
+  opacity: 1;
+  animation: glow 1.2s ease-in-out infinite;
+}
+
+.code-panel:has(#code-good:checked) .unlock-check:checked~.unlock-grid .door .door-hazard {
+  opacity: 1;
+  animation: hazardFlash 1.1s ease-in-out infinite;
+}
+
 .unlock-wrap {
   position: relative;
 }
@@ -1019,20 +1279,6 @@ body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
       rgba(255, 59, 59, 0.12) 14px,
       rgba(255, 59, 59, 0.12) 28px);
   transition: opacity var(--t-slow) ease;
-}
-
-.unlock-check:checked~.unlock-grid .door .door-slab {
-  transform: perspective(700px) rotateY(-28deg);
-}
-
-.unlock-check:checked~.unlock-grid .door .door-glow {
-  opacity: 1;
-  animation: glow 1.2s ease-in-out infinite;
-}
-
-.unlock-check:checked~.unlock-grid .door .door-hazard {
-  opacity: 1;
-  animation: hazardFlash 1.1s ease-in-out infinite;
 }
 
 .door-caption {

@@ -4,8 +4,9 @@
   Escape Room Challenge (Track F) + Adventure Pack
   Theme: dark cinematic neon laboratory + evacuation scenario
 
-  - This page sets the tone (evacuation alert + checkpoints).
-  - I wrapped the hero content in .hero-stage so I can add a subtle flicker overlay using CSS only.
+  Note:
+  - This page sets the tone and introduces the route.
+  - I added an "Evac Map" component that I reuse on rooms.html so the UI feels consistent.
 -->
 <html lang="en">
 
@@ -106,6 +107,46 @@
               </div>
               <p class="progress-label">Progress: 20%</p>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Evac Map</h2>
+        <p class="page-subtitle">
+          Student note: This is a mini “map UI” using CSS Grid. I reuse the same component on the Rooms page.
+        </p>
+
+        <div class="evac-map card" aria-label="Evacuation map">
+          <div class="map-grid">
+            <div class="map-node node-start">
+              <p class="node-title">Start</p>
+              <p class="node-sub">Containment Lobby</p>
+              <span class="node-tag">Zone 1</span>
+            </div>
+
+            <div class="map-path" aria-hidden="true"></div>
+
+            <div class="map-node node-mid">
+              <p class="node-title">Checkpoint</p>
+              <p class="node-sub">Research Archive</p>
+              <span class="node-tag">Zone 2</span>
+            </div>
+
+            <div class="map-path" aria-hidden="true"></div>
+
+            <div class="map-node node-end">
+              <p class="node-title">Exit Seal</p>
+              <p class="node-sub">Reactor Corridor</p>
+              <span class="node-tag">Zone 3</span>
+            </div>
+          </div>
+
+          <div class="map-actions">
+            <a class="btn btn-primary" href="rooms.html">Go to Zones</a>
+            <a class="btn btn-ghost" href="final.html">Jump to Exit Seal</a>
           </div>
         </div>
       </div>
