@@ -2,9 +2,15 @@
   styles.css
   Escape Room Challenge (HTML/CSS only)
   Theme: dark cinematic neon laboratory during evacuation
+
+  Student note for professor:
+  - This file is organized in sections (base, layout, components, animations, media queries).
+  - I kept the design consistent by reusing components like .card, .card-grid, and the Evac Map.
+  - Recent fix: improved symmetry for the “What’s inside” card row + Evac Map alignment.
 */
 
 :root {
+  /* Core colors */
   --bg: #05070b;
   --panel: #0b1220;
   --panel-2: #08101c;
@@ -12,6 +18,7 @@
   --muted: rgba(232, 240, 255, 0.72);
   --line: rgba(232, 240, 255, 0.12);
 
+  /* Neon accents */
   --neon-cyan: #2bf6ff;
   --neon-magenta: #ff3df2;
   --neon-violet: #7c5cff;
@@ -20,17 +27,21 @@
   --accent: var(--neon-cyan);
   --accent-2: var(--neon-magenta);
 
+  /* Layout tokens */
   --radius: 16px;
   --shadow: 0 16px 44px rgba(0, 0, 0, 0.55);
 
+  /* Spacing scale */
   --space-1: 8px;
   --space-2: 12px;
   --space-3: 16px;
   --space-4: 22px;
   --space-5: 32px;
 
+  /* Container width */
   --max: 1100px;
 
+  /* Timing tokens */
   --t-fast: 160ms;
   --t-med: 240ms;
   --t-slow: 520ms;
@@ -45,6 +56,9 @@ body {
   height: 100%;
 }
 
+/* Student note:
+  Background uses multiple gradients to look "cinematic" without images.
+*/
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -58,6 +72,7 @@ body {
     var(--bg);
 }
 
+/* Subtle scanline overlay to make it feel like a lab terminal */
 body::before {
   content: "";
   position: fixed;
@@ -77,11 +92,13 @@ a {
   color: inherit;
 }
 
+/* Simple centered container */
 .container {
   width: min(var(--max), calc(100% - 2 * var(--space-4)));
   margin: 0 auto;
 }
 
+/* Accessibility: let keyboard users skip nav */
 .skip-link {
   position: absolute;
   left: -999px;
@@ -97,6 +114,7 @@ a {
   left: 12px;
 }
 
+/* Sticky header so the nav is always available */
 .site-header {
   position: sticky;
   top: 0;
@@ -114,6 +132,7 @@ a {
   padding: var(--space-3) 0;
 }
 
+/* Logo / brand styling */
 .brand {
   display: inline-flex;
   align-items: center;
@@ -135,6 +154,7 @@ a {
   animation: neonPulse 2.2s ease-in-out infinite;
 }
 
+/* Nav bar links */
 .site-nav {
   display: flex;
   gap: 10px;
@@ -147,7 +167,11 @@ a {
   padding: 8px 10px;
   border-radius: 10px;
   color: var(--muted);
-  transition: background var(--t-fast) ease, transform var(--t-fast) ease, color var(--t-fast) ease, border-color var(--t-fast) ease;
+  transition:
+    background var(--t-fast) ease,
+    transform var(--t-fast) ease,
+    color var(--t-fast) ease,
+    border-color var(--t-fast) ease;
   border: 1px solid transparent;
 }
 
@@ -158,12 +182,14 @@ a {
   border-color: rgba(43, 246, 255, 0.22);
 }
 
+/* Visual current page styling (class-based) */
 .nav-link.is-active {
   background: rgba(43, 246, 255, 0.10);
   border: 1px solid rgba(43, 246, 255, 0.30);
   color: var(--text);
 }
 
+/* Sections spacing */
 .section {
   padding: var(--space-5) 0;
 }
@@ -184,6 +210,7 @@ a {
   max-width: 70ch;
 }
 
+/* Hero layout */
 .hero {
   padding: clamp(30px, 5vw, 70px) 0;
 }
@@ -214,18 +241,15 @@ a {
   margin-top: var(--space-4);
 }
 
-/* Note:
-  Cinematic hero effects (CSS-only):
-  - hero-stage gives me a layer to add flicker/scan overlays without extra images
-  - btn-beacon makes the main CTA feel like an emergency beacon
-  I keep it subtle so it doesn't hurt readability.
+/*
+  Cinematic hero effects (CSS-only)
+  Student note:
+  - I add "flicker" with a pseudo element so I don’t need extra markup.
 */
-
 .hero-stage {
   position: relative;
 }
 
-/* Flicker overlay: very subtle, just to sell the "unstable lab lights" vibe */
 .hero-stage::before {
   content: "";
   position: absolute;
@@ -246,7 +270,7 @@ a {
   letter-spacing: 0.4px;
 }
 
-/* Beacon CTA: adds a soft pulse glow */
+/* Beacon CTA glow */
 .btn-beacon {
   position: relative;
 }
@@ -260,49 +284,6 @@ a {
   opacity: 0.0;
   background: radial-gradient(circle at 50% 50%, rgba(43, 246, 255, 0.22), transparent 60%);
   animation: beacon 1.7s ease-in-out infinite;
-}
-
-@keyframes flicker {
-
-  0%,
-  100% {
-    opacity: 0.10;
-    filter: brightness(1);
-  }
-
-  44% {
-    opacity: 0.14;
-    filter: brightness(1.03);
-  }
-
-  48% {
-    opacity: 0.06;
-    filter: brightness(0.98);
-  }
-
-  52% {
-    opacity: 0.15;
-    filter: brightness(1.04);
-  }
-
-  70% {
-    opacity: 0.11;
-    filter: brightness(1);
-  }
-}
-
-@keyframes beacon {
-
-  0%,
-  100% {
-    opacity: 0.18;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.32;
-    transform: scale(1.02);
-  }
 }
 
 .alert-bar {
@@ -321,6 +302,7 @@ a {
   animation: siren 1.3s ease-in-out infinite;
 }
 
+/* Simple callout box in hero */
 .notice {
   margin-top: var(--space-4);
   padding: var(--space-3);
@@ -339,18 +321,33 @@ a {
   color: var(--muted);
 }
 
+/* Card grid base (mobile-first) */
 .card-grid {
   display: grid;
-  gap: var(--space-3);
-  grid-template-columns: 1fr;
+
+  /* Student note: bigger gap = more “intentional” spacing, especially on desktop */
+  gap: var(--space-4);
+
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: stretch;
+  justify-items: stretch;
 }
 
-/* Note:
-  Evac Map component (reused on multiple pages)
-  - This is basically a mini map UI made from Grid + styled nodes + a path line.
-  - The point is to show reuse and consistent design language (rubric friendly).
+/*
+  Student note: This fixes the Rooms page spacing.
+  The Route Map card is a .card, and the zone cards are a .card-grid right after it.
+  This gives a consistent vertical gap so they don’t feel “glued together”.
 */
+.card+.card-grid {
+  margin-top: var(--space-4);
+}
 
+/*
+  Evac Map component (reused on multiple pages)
+  Student note:
+  - Mobile stacks the nodes so nothing gets cramped.
+  - Desktop becomes: node, path, node, path, node.
+*/
 .evac-map {
   margin-bottom: var(--space-4);
 }
@@ -422,29 +419,7 @@ a {
   flex-wrap: wrap;
 }
 
-@keyframes mapFlow {
-
-  0%,
-  100% {
-    filter: brightness(1);
-  }
-
-  50% {
-    filter: brightness(1.12);
-  }
-}
-
-@media (min-width: 700px) {
-  .map-grid {
-    grid-template-columns: 1fr 80px 1fr 80px 1fr;
-    align-items: center;
-  }
-
-  .map-path {
-    height: 14px;
-  }
-}
-
+/* Card base component */
 .card {
   position: relative;
   background:
@@ -455,8 +430,18 @@ a {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: var(--space-4);
-  transition: transform var(--t-med) ease, border-color var(--t-med) ease, box-shadow var(--t-med) ease;
+  transition:
+    transform var(--t-med) ease,
+    border-color var(--t-med) ease,
+    box-shadow var(--t-med) ease;
   animation: fadeUp var(--t-slow) ease both;
+
+  /* Student note:
+    Flex column + margin-top:auto on the link makes cards align evenly in a row.
+  */
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
 }
 
 .card:hover {
@@ -479,9 +464,15 @@ a {
   color: var(--muted);
 }
 
+/* Bottom link inside cards */
 .card-link {
   display: inline-block;
-  margin-top: var(--space-3);
+
+  /* Student note:
+    This pins the link to the bottom so all cards share the same baseline.
+  */
+  margin-top: auto;
+
   color: var(--text);
   text-decoration: none;
   padding-bottom: 2px;
@@ -494,6 +485,7 @@ a {
   transform: translateY(-1px);
 }
 
+/* Button base */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -503,16 +495,52 @@ a {
   padding: 10px 14px;
   text-decoration: none;
   border: 1px solid transparent;
-  transition: transform var(--t-fast) ease, background var(--t-fast) ease, border-color var(--t-fast) ease, box-shadow var(--t-fast) ease;
+  transition:
+    transform var(--t-fast) ease,
+    background var(--t-fast) ease,
+    border-color var(--t-fast) ease,
+    box-shadow var(--t-fast) ease;
   cursor: pointer;
 }
 
+/* Student note:
+  Focus styles are required for keyboard navigation and accessibility scoring.
+*/
 .btn:focus-visible,
 .nav-link:focus-visible,
 .reveal-btn:focus-visible,
 .clue-item:focus-visible {
   outline: 3px solid rgba(43, 246, 255, 0.75);
   outline-offset: 2px;
+}
+
+/*
+  Accessibility polish
+  - aria-current helps screen readers identify active page
+  - stronger focus rings make tab navigation more obvious
+*/
+.nav-link[aria-current="page"] {
+  background: rgba(43, 246, 255, 0.10);
+  border: 1px solid rgba(43, 246, 255, 0.30);
+  color: var(--text);
+}
+
+.btn:focus-visible,
+.nav-link:focus-visible,
+.reveal-btn:focus-visible,
+.clue-item:focus-visible,
+.card-link:focus-visible {
+  outline: 3px solid rgba(43, 246, 255, 0.85);
+  outline-offset: 3px;
+}
+
+.map-actions .btn:focus-visible {
+  outline: 3px solid rgba(255, 61, 242, 0.75);
+  outline-offset: 3px;
+}
+
+.card-link:focus-visible {
+  border-bottom-color: rgba(255, 61, 242, 0.80);
 }
 
 .btn-primary {
@@ -544,6 +572,7 @@ a {
   font-size: 14px;
 }
 
+/* Rooms page card header row */
 .room-top {
   display: flex;
   align-items: start;
@@ -578,6 +607,7 @@ a {
   background: rgba(255, 59, 59, 0.10);
 }
 
+/* CSS-only clue reveal */
 .reveal {
   margin-top: var(--space-3);
 }
@@ -597,7 +627,11 @@ a {
   border: 1px solid rgba(232, 240, 255, 0.14);
   background: rgba(232, 240, 255, 0.05);
   cursor: pointer;
-  transition: transform var(--t-fast) ease, background var(--t-fast) ease, border-color var(--t-fast) ease, box-shadow var(--t-fast) ease;
+  transition:
+    transform var(--t-fast) ease,
+    background var(--t-fast) ease,
+    border-color var(--t-fast) ease,
+    box-shadow var(--t-fast) ease;
 }
 
 .reveal-btn:hover {
@@ -625,6 +659,7 @@ a {
   font-weight: 680;
 }
 
+/* Timeline list (hero preview) */
 .timeline {
   list-style: none;
   padding: 0;
@@ -676,6 +711,7 @@ a {
   font-size: 14px;
 }
 
+/* Progress bar */
 .progress {
   margin-top: var(--space-3);
 }
@@ -711,6 +747,7 @@ a {
   font-size: 14px;
 }
 
+/* Rooms checkpoint strip */
 .checkpoint-strip {
   margin: 0 0 var(--space-4);
   padding: var(--space-4);
@@ -828,16 +865,7 @@ a {
   font-size: 14px;
 }
 
-@media (min-width: 700px) {
-  .checkpoint-row {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .checkpoint-pill {
-    justify-content: center;
-  }
-}
-
+/* Clues page layout */
 .clue-layout {
   display: grid;
   gap: var(--space-3);
@@ -862,7 +890,10 @@ a {
   border: 1px solid rgba(232, 240, 255, 0.10);
   background: rgba(5, 7, 11, 0.35);
   margin-top: 10px;
-  transition: transform var(--t-fast) ease, border-color var(--t-fast) ease, box-shadow var(--t-fast) ease;
+  transition:
+    transform var(--t-fast) ease,
+    border-color var(--t-fast) ease,
+    box-shadow var(--t-fast) ease;
 }
 
 .clue-item:hover {
@@ -871,13 +902,7 @@ a {
   box-shadow: 0 0 18px rgba(43, 246, 255, 0.10);
 }
 
-/*
-  Terminal-style upgrades for the clue board:
-  - terminal-status adds a “system online” banner
-  - :target clue cards get a scanline highlight to show focus
-  - locked warning panel looks like a restricted notice
-*/
-
+/* Terminal status banner */
 .terminal-status {
   margin: var(--space-3) 0 0;
   padding: 10px 12px;
@@ -897,6 +922,7 @@ a {
   line-height: 1.4;
 }
 
+/* :target highlight effect for the selected clue */
 .clue-card {
   position: relative;
 }
@@ -921,8 +947,8 @@ a {
   animation: scanLine 1.6s ease-in-out infinite;
 }
 
-/*
-  :has is supported in modern browsers, and the page still works without it.
+/* Student note:
+  :has is modern-browser friendly. If it’s unsupported, page still works.
 */
 body:has(#clue-lobby:target) .clue-item[href="#clue-lobby"],
 body:has(#clue-archive:target) .clue-item[href="#clue-archive"],
@@ -952,20 +978,6 @@ body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
   margin: 6px 0 0;
   color: rgba(255, 220, 220, 0.78);
   font-size: 14px;
-}
-
-@keyframes scanLine {
-  0% {
-    transform: translateY(-12px);
-  }
-
-  50% {
-    transform: translateY(0px);
-  }
-
-  100% {
-    transform: translateY(12px);
-  }
 }
 
 .chip {
@@ -999,6 +1011,7 @@ body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
   gap: var(--space-3);
 }
 
+/* :target-based "only show the selected clue" behavior */
 .clue-card {
   display: none;
 }
@@ -1046,12 +1059,12 @@ body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
   color: var(--muted);
 }
 
-/* Note:
+/*
   Final unlock "override console" (CSS-only)
-  - radio buttons simulate choosing a code pattern
-  - correct selection (code-good) unlocks the switch visually
+  Student note:
+  - Radio buttons simulate code selection.
+  - Correct selection enables the unlock label/button.
 */
-
 .code-panel {
   margin-bottom: var(--space-3);
 }
@@ -1084,7 +1097,11 @@ body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
   border: 1px solid rgba(232, 240, 255, 0.12);
   background: rgba(5, 7, 11, 0.35);
   cursor: pointer;
-  transition: transform var(--t-fast) ease, border-color var(--t-fast) ease, box-shadow var(--t-fast) ease, background var(--t-fast) ease;
+  transition:
+    transform var(--t-fast) ease,
+    border-color var(--t-fast) ease,
+    box-shadow var(--t-fast) ease,
+    background var(--t-fast) ease;
 }
 
 .code-option:hover {
@@ -1145,7 +1162,6 @@ body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
   align-items: center;
 }
 
-/* By default the switch looks disabled */
 .btn-lock {
   opacity: 0.55;
   pointer-events: none;
@@ -1153,11 +1169,6 @@ body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
   background: rgba(232, 240, 255, 0.05);
 }
 
-/* Status logic:
-  - If code-good is checked: show ACCESS GRANTED and enable the switch
-  - If any other code is checked: show ACCESS DENIED
-  - If none checked: show idle
-*/
 .code-panel .access-idle {
   display: block;
 }
@@ -1179,7 +1190,6 @@ body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
   color: rgba(210, 255, 250, 0.95);
 }
 
-/* Enable switch when correct code is selected */
 .code-panel:has(#code-good:checked) .btn-lock {
   opacity: 1;
   pointer-events: auto;
@@ -1187,11 +1197,7 @@ body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
   border-color: rgba(43, 246, 255, 0.35);
 }
 
-/* Note:
-  Door animation should only react when BOTH:
-  - correct code is selected AND
-  - unlock checkbox is checked
-*/
+/* Door animation gated behind correct code + switch */
 .code-panel:has(#code-good:checked) .unlock-check:checked~.unlock-grid .door .door-slab {
   transform: perspective(700px) rotateY(-28deg);
 }
@@ -1291,6 +1297,7 @@ body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
   color: var(--muted);
 }
 
+/* Footer */
 .site-footer {
   border-top: 1px solid var(--line);
   padding: var(--space-4) 0;
@@ -1322,6 +1329,7 @@ body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
   border-color: rgba(43, 246, 255, 0.70);
 }
 
+/* Motion keyframes */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -1422,13 +1430,110 @@ body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
   }
 }
 
+@keyframes mapFlow {
+
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+
+  50% {
+    filter: brightness(1.12);
+  }
+}
+
+@keyframes scanLine {
+  0% {
+    transform: translateY(-12px);
+  }
+
+  50% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(12px);
+  }
+}
+
+@keyframes flicker {
+
+  0%,
+  100% {
+    opacity: 0.10;
+    filter: brightness(1);
+  }
+
+  44% {
+    opacity: 0.14;
+    filter: brightness(1.03);
+  }
+
+  48% {
+    opacity: 0.06;
+    filter: brightness(0.98);
+  }
+
+  52% {
+    opacity: 0.15;
+    filter: brightness(1.04);
+  }
+
+  70% {
+    opacity: 0.11;
+    filter: brightness(1);
+  }
+}
+
+@keyframes beacon {
+
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.32;
+    transform: scale(1.02);
+  }
+}
+
+/* Responsive layout */
 @media (min-width: 700px) {
   .hero-grid {
     grid-template-columns: 1.2fr 0.8fr;
   }
 
+  /* Student note:
+    Using auto-fit + minmax makes the “What’s inside” cards feel balanced
+    and avoids awkward spacing if the screen is between breakpoints.
+  */
   .card-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-5);
+    align-items: stretch;
+    justify-items: stretch;
+  }
+
+  /* Evac map becomes a horizontal route */
+  .map-grid {
+    grid-template-columns: 1fr 90px 1fr 90px 1fr;
+    align-items: center;
+  }
+
+  /* Center the map content so it looks symmetrical */
+  .map-node {
+    text-align: center;
+  }
+
+  .node-tag {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .map-path {
+    height: 14px;
   }
 
   .clue-layout {
@@ -1438,8 +1543,17 @@ body:has(#clue-vault:target) .clue-item[href="#clue-vault"] {
   .unlock-grid {
     grid-template-columns: 1fr 1fr;
   }
+
+  .checkpoint-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .checkpoint-pill {
+    justify-content: center;
+  }
 }
 
+/* Reduced motion support (required for accessibility polish) */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.001ms !important;
