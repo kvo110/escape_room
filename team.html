@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <!--
   team.html
-  Solo project team page with time tracking + development journal
+  Escape Room Challenge (HTML/CSS only)
 
   Student note for professor:
-  - Even though this is solo, I’m tracking time + decisions so my process is easy to defend in the walkthrough.
+  - This project was completed as a solo submission (one-person team).
+  - This page explains what I built, the main CSS-only interactions, and how I tested it.
 -->
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Team | Escape Room Challenge</title>
-  <meta name="description" content="Team introduction, time tracking, and development journal summary." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Lab Escape | Team</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
@@ -21,7 +21,6 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <!-- Student note: keep branding consistent across all pages -->
       <a class="brand" href="index.html" aria-label="Escape Room Challenge Home">
         <span class="brand-mark" aria-hidden="true">🧪</span>
         <span class="brand-text">Neon Lab Escape</span>
@@ -42,54 +41,88 @@
       <header class="page-head">
         <h1 class="page-title">Team</h1>
         <p class="page-subtitle">
-          Solo project, but I’m still tracking time and decisions so the process is easy to explain in the walkthrough.
+          Solo submission. I handled the design, the story flow, the CSS-only interactions, and final testing across
+          desktop
+          and mobile.
         </p>
       </header>
 
-      <section class="card-grid" aria-label="Team cards">
+      <section class="card-grid" aria-label="Team overview cards">
         <article class="card">
-          <h2 class="card-title">Project Leader</h2>
-          <p class="card-text"><strong>Kenny Vo</strong></p>
-          <p class="card-text">Responsibilities:</p>
-          <ul class="list">
-            <li>Planning and wireframes</li>
-            <li>HTML structure and page flow</li>
-            <li>CSS design system and responsiveness</li>
-            <li>Motion, accessibility, and final polish</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h2 class="card-title">Time Tracking</h2>
-          <p class="card-text">Student note: I update this daily so I have process evidence for the rubric.</p>
-
-          <ul class="list">
-            <li>Day 1: 1.0 hr (planning + scaffold)</li>
-            <li>Day 2: ___ hr</li>
-            <li>Day 3: ___ hr</li>
-          </ul>
+          <h2 class="card-title">Member</h2>
+          <p class="card-text">
+            <strong>Kenny Vo</strong><br />
+            Role: Solo developer (layout, styling, interactions, and content)
+          </p>
 
           <p class="mini-note">
-            Later I can format this as a nicer table once the content stabilizes.
+            Student note: I kept everything HTML/CSS only by using checkbox and radio “state” patterns.
           </p>
         </article>
 
         <article class="card">
-          <h2 class="card-title">Development Journal (Starter)</h2>
+          <h2 class="card-title">What I built</h2>
+          <p class="card-text">
+            A small escape-room website with a “neon lab evacuation” theme and a clear start-to-finish path.
+          </p>
+
           <ul class="list">
-            <li>Decision: Use Grid for page-level layouts and Flex for smaller UI alignment.</li>
-            <li>Decision: Use CSS-only interaction patterns (:target and :checked) to simulate puzzle reveals.</li>
-            <li>Goal: Keep motion subtle so it supports UX instead of feeling like random animation.</li>
+            <li><strong>Home</strong>: mission brief + route preview</li>
+            <li><strong>Rooms</strong>: zone cards with CSS-only clue reveals</li>
+            <li><strong>Clue Board</strong>: target-based clue browsing (no JavaScript)</li>
+            <li><strong>Final Unlock</strong>: radio override + switch trigger + door animation</li>
+            <li><strong>Team</strong>: project summary + testing notes</li>
           </ul>
         </article>
+
+        <article class="card">
+          <h2 class="card-title">Key CSS-only interactions</h2>
+          <p class="card-text">
+            These were the main “escape room” mechanics, implemented without JavaScript.
+          </p>
+
+          <ul class="list">
+            <li><strong>Reveal clue buttons</strong>: checkbox + adjacent sibling selectors</li>
+            <li><strong>Clue Board navigation</strong>: <code>:target</code> highlights and show/hide</li>
+            <li><strong>Final Unlock</strong>: radio selection enables the switch, then <code>:has()</code> unlocks the
+              door</li>
+            <li><strong>Accessibility</strong>: skip link, focus-visible rings, reduced-motion support</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section" aria-label="Testing and checklist">
+        <div class="card">
+          <h2 class="card-title">Testing notes</h2>
+          <p class="card-text">
+            I checked the site on desktop and on mobile/tablet sizes to make sure the layout stays readable and the
+            interactions still work without hover.
+          </p>
+
+          <ul class="list">
+            <li>Verified navigation links on every page (no dead ends)</li>
+            <li>Verified every “Reveal clue” checkbox opens and closes correctly</li>
+            <li>Verified Clue Board <code>:target</code> behavior (selected clue shows, others hide)</li>
+            <li>Verified Final Unlock logic: wrong code shows denied, correct code enables the switch, switch opens door
+            </li>
+            <li>Verified reduced motion: animations stop, but the UI is still usable</li>
+            <li>Verified mobile glow fix: background stays subtle on iPhone/iPad</li>
+          </ul>
+
+          <p class="mini-note">
+            Student note: If a browser doesn’t support <code>:has()</code>, the Final Unlock still displays the story
+            content,
+            but the door animation may not trigger. (Modern Chrome/Safari should support it.)
+          </p>
+        </div>
       </section>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p class="footer-text">Team page | process evidence</p>
-      <p class="footer-text"><a class="footer-link" href="index.html">Back home</a></p>
+      <p class="footer-text">Neon Lab Escape · HTML/CSS only</p>
+      <a class="footer-link" href="index.html">Back to Home</a>
     </div>
   </footer>
 </body>
