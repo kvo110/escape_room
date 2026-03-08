@@ -3,7 +3,7 @@ CSC 4370 Project 1 Submission
 Student: Kenny Vo
 
 CODD Website:
-https://codd.cs.gsu.edu/~kvo/escape-room/
+https://codd.cs.gsu.edu/~hvo30/WP/PW/escape_room
 
 GitHub Repository:
 https://github.com/kvo110/escape_room
