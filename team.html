@@ -42,12 +42,12 @@
         <h1 class="page-title">Team</h1>
         <p class="page-subtitle">
           Solo submission. I handled the design, the story flow, the CSS-only interactions, and final testing across
-          desktop
-          and mobile.
+          desktop and mobile.
         </p>
       </header>
 
       <section class="card-grid" aria-label="Team overview cards">
+
         <article class="card">
           <h2 class="card-title">Member</h2>
           <p class="card-text">
@@ -89,11 +89,63 @@
             <li><strong>Accessibility</strong>: skip link, focus-visible rings, reduced-motion support</li>
           </ul>
         </article>
+
+      </section>
+
+      <section class="section" aria-label="Development evidence">
+        <div class="card">
+
+          <h2 class="card-title">Development evidence</h2>
+
+          <p class="card-text">
+            Since this is a solo project, I tracked progress with a simple personal Kanban (To Do → In Progress → Done)
+            and made small, frequent commits while building each page and interaction.
+          </p>
+
+          <h3 class="card-title">Kanban-style progress log</h3>
+
+          <ul class="list">
+            <li>
+              <strong>To Do (initial planning stage)</strong>: Define project concept, outline required pages (Home,
+              Rooms,
+              Clue Board, Final Unlock, Team), and plan CSS-only interaction approach.
+            </li>
+
+            <li>
+              <strong>In Progress (development phase)</strong>: Build page layouts using Flexbox and Grid, connect
+              navigation
+              between pages, and implement CSS-based interaction mechanics such as clue reveals, target-based
+              navigation,
+              and the final unlock system.
+            </li>
+
+            <li>
+              <strong>Done (final stage)</strong>: Refine visual design, add animations and transitions, ensure
+              accessibility
+              features (focus states and reduced-motion), test responsiveness across desktop, tablet, and mobile
+              devices,
+              and perform final polish before submission.
+            </li>
+          </ul>
+
+          <h3 class="card-title">Timeline of work</h3>
+
+          <ul class="list">
+            <li><strong>Phase 1</strong>: Proposal alignment + page plan</li>
+            <li><strong>Phase 2</strong>: Base layout system (container, header/nav, cards, grids)</li>
+            <li><strong>Phase 3</strong>: CSS-only interactions (checkbox reveals, :target clues, :has() unlock)</li>
+            <li><strong>Phase 4</strong>: Motion + design polish (animations, hover states, neon effects)</li>
+            <li><strong>Phase 5</strong>: Testing + fixes (mobile spacing, background glow, responsive layout)</li>
+          </ul>
+
+        </div>
       </section>
 
       <section class="section" aria-label="Testing and checklist">
         <div class="card">
+
           <h2 class="card-title">Testing notes</h2>
+
           <p class="card-text">
             I checked the site on desktop and on mobile/tablet sizes to make sure the layout stays readable and the
             interactions still work without hover.
@@ -105,17 +157,38 @@
             <li>Verified Clue Board <code>:target</code> behavior (selected clue shows, others hide)</li>
             <li>Verified Final Unlock logic: wrong code shows denied, correct code enables the switch, switch opens door
             </li>
-            <li>Verified reduced motion: animations stop, but the UI is still usable</li>
+            <li>Verified reduced motion: animations stop but the UI remains usable</li>
             <li>Verified mobile glow fix: background stays subtle on iPhone/iPad</li>
           </ul>
 
-          <p class="mini-note">
-            Student note: If a browser doesn’t support <code>:has()</code>, the Final Unlock still displays the story
-            content,
-            but the door animation may not trigger. (Modern Chrome/Safari should support it.)
+          <h3 class="card-title">Testing evidence</h3>
+
+          <p class="card-text">
+            During development I tested each page multiple times while adding new features to ensure layout changes,
+            animations, and CSS-only interactions continued to work correctly.
           </p>
+
+          <ul class="list">
+            <li><strong>Layout testing:</strong> confirmed card grids, evacuation map, and navigation alignment across
+              screen sizes</li>
+            <li><strong>Interaction testing:</strong> verified reveal panels, <code>:target</code> navigation, and final
+              unlock logic</li>
+            <li><strong>Responsive testing:</strong> checked mobile, tablet, and desktop breakpoints for readability
+            </li>
+            <li><strong>Accessibility testing:</strong> confirmed focus indicators, skip link navigation, and
+              reduced-motion behavior</li>
+            <li><strong>Bug fixes:</strong> corrected card spacing issues, evacuation map layout symmetry, and mobile
+              background rendering</li>
+          </ul>
+
+          <p class="mini-note">
+            Student note: I tested mainly in Chrome and Safari to confirm modern CSS features like <code>:has()</code>
+            work correctly.
+          </p>
+
         </div>
       </section>
+
     </div>
   </main>
 
@@ -125,6 +198,7 @@
       <a class="footer-link" href="index.html">Back to Home</a>
     </div>
   </footer>
+
 </body>
 
 </html>
